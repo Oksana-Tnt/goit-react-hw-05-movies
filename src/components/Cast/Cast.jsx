@@ -20,7 +20,7 @@ const Cast = () => {
   
     castById(movieId);
   
-  },[])
+  },[movieId])
     
     return(
         <>
