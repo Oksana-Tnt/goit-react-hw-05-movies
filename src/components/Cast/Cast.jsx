@@ -27,7 +27,7 @@ const Cast = () => {
         <ul>    
             {cast.map(item=>(
                 <li key={item.id}>
-                    <img src={`${CONFIG}/${item.profile_path}`} />
+                    <img src={`${CONFIG}/${item.profile_path}`} alt={item.name}/>
                     <p>{item.name}</p>
                     <p>Character: {item.character}</p>
                 </li>
