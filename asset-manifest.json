@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-05-movies/static/css/main.3857f2c5.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.ce7d156c.js",
+    "main.css": "/goit-react-hw-05-movies/static/css/main.4494a556.css",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.79060ce1.js",
+    "static/media/saddest-cat-luhu-maggie-liu-lanlan731-38-59c0bfed09657__700.jpg": "/goit-react-hw-05-movies/static/media/saddest-cat-luhu-maggie-liu-lanlan731-38-59c0bfed09657__700.6315ca9129ebbaad9c96.jpg",
     "index.html": "/goit-react-hw-05-movies/index.html",
-    "main.3857f2c5.css.map": "/goit-react-hw-05-movies/static/css/main.3857f2c5.css.map",
-    "main.ce7d156c.js.map": "/goit-react-hw-05-movies/static/js/main.ce7d156c.js.map"
+    "main.4494a556.css.map": "/goit-react-hw-05-movies/static/css/main.4494a556.css.map",
+    "main.79060ce1.js.map": "/goit-react-hw-05-movies/static/js/main.79060ce1.js.map"
   },
   "entrypoints": [
-    "static/css/main.3857f2c5.css",
-    "static/js/main.ce7d156c.js"
+    "static/css/main.4494a556.css",
+    "static/js/main.79060ce1.js"
   ]
 }
