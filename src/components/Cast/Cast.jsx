@@ -13,6 +13,7 @@ const Cast = () => {
   const [status, setStatus] = useState(STATUS.IDLE);
   const CONFIG = 'https://image.tmdb.org/t/p/w200';
 
+
   useEffect(() => {
     const castById = async movieId => {
       try {
@@ -20,11 +21,11 @@ const Cast = () => {
         const data = await getDetailsById(movieId, END_POINT);
         setCast(data.data.cast);
         setStatus(STATUS.RESOLVED);
+        console.log(cast);
       } catch (err) {
         setStatus(STATUS.REJECTED);
       }
     };
-
     castById(movieId);
   }, [movieId]);
 

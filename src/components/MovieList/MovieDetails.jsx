@@ -9,7 +9,7 @@ import Loader from 'components/Loader/Loader';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState({});
   const [genres, setGenres] = useState([]);
   const [status, setStatus] = useState(STATUS.IDLE);
 
@@ -27,6 +27,7 @@ const MovieDetails = () => {
     };
 
     movieById(movieId);
+   
   }, [movieId]);
 
   if (status === STATUS.PENDING) return <Loader />;

@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 const Reviews = () => {
   const END_POINT = 'reviews';
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState({});
   const [status, setStatus] = useState(STATUS.IDLE);
 
   useEffect(() => {
