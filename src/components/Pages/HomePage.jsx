@@ -22,7 +22,7 @@ const HomePage = () => {
     };
 
     requestMovies();
-  }, [STATUS.PENDING, STATUS.RESOLVED, STATUS.REJECTED]);
+  }, []);
 
   if (status === STATUS.PENDING) return <Loader />;
   else if (status === STATUS.RESOLVED) {

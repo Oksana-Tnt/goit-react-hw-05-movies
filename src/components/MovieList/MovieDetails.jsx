@@ -27,7 +27,7 @@ const MovieDetails = () => {
     };
 
     movieById(movieId);
-  }, [movieId, STATUS.PENDING, STATUS.RESOLVED, STATUS.REJECTED]);
+  }, [movieId]);
 
   if (status === STATUS.PENDING) return <Loader />;
   else if (status === STATUS.RESOLVED) {
