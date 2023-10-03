@@ -1,44 +1,53 @@
-import { getCastById } from "Services/Film-api";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { getDetailsById } from 'Services/Film-api';
+import { STATUS } from 'components/APP/APP';
+import ErrorCard from 'components/ErrorCard/ErrorCard';
+import Loader from 'components/Loader/Loader';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import css from './Cast.module.css';
 
 const Cast = () => {
-    const END_POINT='credits';
-    const { movieId } = useParams();
-    const [cast, setCast] = useState([]);
-    const CONFIG = 'https://image.tmdb.org/t/p/w200';
+  const END_POINT = 'credits';
+  const { movieId } = useParams();
+  const [cast, setCast] = useState([]);
+  const [status, setStatus] = useState(STATUS.IDLE);
+  const CONFIG = 'https://image.tmdb.org/t/p/w200';
 
-  useEffect(()=>{
+  useEffect(() => {
     const castById = async movieId => {
       try {
-        const data = await getCastById(movieId, END_POINT);
-        setCast(data.data.cast);    
+        setStatus(STATUS.PENDING);
+        const data = await getDetailsById(movieId, END_POINT);
+        setCast(data.data.cast);
+        setStatus(STATUS.RESOLVED);
       } catch (err) {
-        console.log(err);
+        setStatus(STATUS.REJECTED);
       }
     };
-  
+
     castById(movieId);
-  
-  },[movieId])
-    
-    return(
-        <>
-        <ul>    
-            {cast.map(item=>(
-                <li key={item.id}>
-                    <img src={`${CONFIG}/${item.profile_path}`} alt={item.name}/>
-                    <p>{item.name}</p>
-                    <p>Character: {item.character}</p>
-                </li>
-            ))}
-        
-      </ul>
-        </>     
-  
+  }, [movieId]);
+
+  if (status === STATUS.PENDING) return <Loader />;
+  else if (status === STATUS.RESOLVED) {
+    return (
+      <>
+        <ul className={css.castList}>
+          {cast.map(item => (
+            <li className={css.castItem} key={item.id}>
+              <img
+                className={css.castImg}
+                src={`${CONFIG}/${item.profile_path}`}
+                alt={item.name}
+              />
+              <p>{item.name}</p>
+              <p>Character: {item.character}</p>
+            </li>
+          ))}
+        </ul>
+      </>
     );
-   
-  };
-  
-  export default Cast;
-  
+  } else if (status === STATUS.REJECTED) return <ErrorCard />;
+};
+
+export default Cast;
