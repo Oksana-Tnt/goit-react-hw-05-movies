@@ -9,6 +9,13 @@ import NonFound from 'components/NonFound/NonFound';
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
 
+export const STATUS = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+};
+
 const APP = () => {
   return (
     <>
@@ -17,9 +24,10 @@ const APP = () => {
           <Route index element={<HomePage />} />|
           <Route path="movies" element={<Movies />} />|
           <Route path=":movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-          </Route>|
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>{' '}
+          |
           <Route path="*" element={<NonFound />} />|
         </Route>
         |

@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    gap: 20px;
+}
+
+.descriptions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 35px;
+}
+
+.genresList {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.genres {
+    text-align: left;
+}
+
+.score {
+    padding: 0;
+    margin: 0;
+}
