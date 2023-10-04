@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/18.dd635f30.chunk.js","mappings":"wJAME,UANe,WACb,OACEA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,aAET,C","sources":["components/NonFound/NonFound.jsx"],"sourcesContent":["const NonFound = () => {\n    return (\n      <div>Non Found</div>\n    );\n  };\n  \n  export default NonFound;"],"names":["_jsx","children"],"sourceRoot":""}
