@@ -2,7 +2,7 @@ import { getDetailsById } from 'Services/Film-api';
 import { STATUS } from 'components/APP/APP';
 import ErrorCard from 'components/ErrorCard/ErrorCard';
 import Loader from 'components/Loader/Loader';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import css from './Cast.module.css';
 import defaultImg from '../default-pfp-aesthetic.jpg';

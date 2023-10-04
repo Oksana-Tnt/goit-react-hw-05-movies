@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const MovieList = ({ movies }) => {
