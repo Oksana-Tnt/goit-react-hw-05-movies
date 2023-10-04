@@ -1,13 +1,15 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes } from 'react-router-dom';
-import MovieDetails from 'components/MovieList/MovieDetails';
-import Movies from 'components/Pages/Movies';
 import React from 'react';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from 'components/Layout/Layout';
 import HomePage from 'components/Pages/HomePage';
-import NonFound from 'components/NonFound/NonFound';
-import Cast from 'components/Cast/Cast';
-import Reviews from 'components/Reviews/Reviews';
+
+const Movies = lazy(() => import('components/Pages/Movies'));
+const NonFound = lazy(() => import('components/NonFound/NonFound'));
+const MovieDetails = lazy(() => import('components/MovieList/MovieDetails'));
+const Cast = lazy(() => import('components/Cast/Cast'));
+const Reviews = lazy(() => import('components/Reviews/Reviews'));
 
 export const STATUS = {
   IDLE: 'idle',

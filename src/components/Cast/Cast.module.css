@@ -2,12 +2,32 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+   row-gap: 60px;
+    column-gap: 70px;
 }
 
 .castItem{
     width: 200px;
+    height: 300px;
+    margin-bottom: 10px;
 }
 .castImg{
-    width: 100%;
+    width: 200px;
+    height: 300px;
+    padding: 0;
+    margin: 0;
+
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.castName{
+    margin: 0;
+    padding-top: 10px;
+ 
 }

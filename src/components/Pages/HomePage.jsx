@@ -3,7 +3,7 @@ import { STATUS } from 'components/APP/APP';
 import ErrorCard from 'components/ErrorCard/ErrorCard';
 import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);

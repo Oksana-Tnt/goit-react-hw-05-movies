@@ -2,7 +2,7 @@ import { FcSearch } from 'react-icons/fc';
 
 const SearchBar = ({ searchParams }) => {
   const handleChange = ({ target: { value } }) => {
-    searchParams({ query: value });
+    searchParams({ query: value, page:1});
   };
 
   const onSubmit = e => {

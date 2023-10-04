@@ -1,6 +1,6 @@
 import { getMovieById } from 'Services/Film-api';
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 import { STATUS } from 'components/APP/APP';
 import MovieItem from 'components/MovieItem/MovieItem';
@@ -12,6 +12,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [genres, setGenres] = useState([]);
   const [status, setStatus] = useState(STATUS.IDLE);
+  const location = useLocation();
 
   useEffect(() => {
     const movieById = async movieId => {
@@ -27,20 +28,31 @@ const MovieDetails = () => {
     };
 
     movieById(movieId);
-   
   }, [movieId]);
+
+  const backLinkHref = location.state;
 
   if (status === STATUS.PENDING) return <Loader />;
   else if (status === STATUS.RESOLVED) {
     return (
       <>
+        <p>
+          <Link
+            to={backLinkHref}
+            className="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+          >
+            Back to movies
+          </Link>
+        </p>
         <MovieItem movie={movie} genres={genres} />
         <div>Additional information</div>
         <ul className={css.information}>
           <Link to="cast">Cast</Link>
           <Link to="reviews">Reviews</Link>
         </ul>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </>
     );
   } else if (status === STATUS.REJECTED) return <ErrorCard />;

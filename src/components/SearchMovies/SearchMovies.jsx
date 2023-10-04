@@ -12,15 +12,10 @@ const SearchMovies = ({ searchText }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [status, setStatus] = useState(STATUS.IDLE);
 
-  useEffect(() => {
-    setMovies([]);
-    setCurrentPage(1);
-    searchText = ' ';
-  }, []);
-
+  
   useEffect(() => {
     const requestMovies = async searchText => {
-      if (searchText === '') return;
+      if (searchText === '' || searchText=== undefined) return;
       try {
         const data = await searchMovies(searchText, currentPage);
         console.log(searchText);
@@ -42,6 +37,8 @@ const SearchMovies = ({ searchText }) => {
 
   const loadMoreMovies = () => {
     setCurrentPage(prevPage => prevPage + 1);
+
+  
   };
 
   if (status === STATUS.PENDING) return <Loader />;
