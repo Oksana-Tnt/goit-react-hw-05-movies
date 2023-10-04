@@ -13,7 +13,6 @@ const Cast = () => {
   const [status, setStatus] = useState(STATUS.IDLE);
   const CONFIG = 'https://image.tmdb.org/t/p/w200';
 
-
   useEffect(() => {
     const castById = async movieId => {
       try {
@@ -21,7 +20,6 @@ const Cast = () => {
         const data = await getDetailsById(movieId, END_POINT);
         setCast(data.data.cast);
         setStatus(STATUS.RESOLVED);
-        console.log(cast);
       } catch (err) {
         setStatus(STATUS.REJECTED);
       }
@@ -36,11 +34,13 @@ const Cast = () => {
         <ul className={css.castList}>
           {cast.map(item => (
             <li className={css.castItem} key={item.id}>
-              <img
-                className={css.castImg}
-                src={`${CONFIG}/${item.profile_path}`}
-                alt={item.name}
-              />
+              {item.profile_path && (
+                <img
+                  className={css.castImg}
+                  src={`${CONFIG}/${item.profile_path}`}
+                  alt={item.name}
+                />
+              )}
               <p>{item.name}</p>
               <p>Character: {item.character}</p>
             </li>

@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const BASE_URL =
   'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
-const API_KEY = '05fecd37f4938abe676372f3977174d8';
 const ID_URL = 'https://api.themoviedb.org/3/movie';
 const SEARCH_URL = 'https://api.themoviedb.org/3/search/movie';
+const API_KEY = '05fecd37f4938abe676372f3977174d8';
 
 export const getMovies = () => {
   axios.defaults.params = {
@@ -30,10 +30,11 @@ export const getDetailsById = (id, END_POINT) => {
   return axios.get(`${ID_URL}/${id}/${END_POINT}`);
 };
 
-export const searchMovies = (searchText) => {
+export const searchMovies = (searchText, currentPage = 1) => {
   axios.defaults.params = {
     api_key: API_KEY,
+    page: currentPage,
   };
 
-  return axios.get(`${SEARCH_URL}?${searchText}`);
+  return axios.get(`${SEARCH_URL}?query=${searchText}`);
 };

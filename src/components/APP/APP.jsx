@@ -23,10 +23,15 @@ const APP = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />|
           <Route path="movies" element={<Movies />} />|
-          <Route path=":movieId" element={<MovieDetails />}>
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          |
+          <Route path=":movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>{' '}
           |
           <Route path="*" element={<NonFound />} />|
         </Route>
