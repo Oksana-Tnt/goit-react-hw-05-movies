@@ -5,7 +5,7 @@ import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
 import { searchMovies } from 'Services/Film-api';
 import { STATUS } from 'components/APP/APP';
-import { useCustomContext } from 'components/Context/Context';
+import { useCustomContext } from 'Context/Context';
 
 const SearchMovies = ({ searchText }) => {
   const {movies, setMovies} = useCustomContext();
