@@ -1,12 +1,18 @@
 import React from 'react';
 import css from './MovieItem.module.css';
+import defaultImg from '../vecteezy_icon-image-not-found-vector_.jpg';
 
 const MovieItem = ({ movie, genres }) => {
   const CONFIG = 'https://image.tmdb.org/t/p/w300';
 
   return (
     <div className={css.card}>
-      <img src={`${CONFIG}/${movie.poster_path}`} alt={movie.title} />
+      {movie.poster_path ? (
+        <img src={`${CONFIG}/${movie.poster_path}`} alt={movie.title} />
+      ) : (
+        <img src={defaultImg} alt={movie.title} />
+      )}
+
       <div className={css.descriptions}>
         <h2
           className={css.title}

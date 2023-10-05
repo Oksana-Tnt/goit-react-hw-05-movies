@@ -45,6 +45,7 @@ const MovieDetails = () => {
             <AiOutlineArrowLeft /> Back to movies
           </Link>
         </p>
+
         <MovieItem movie={movie} genres={genres} />
         <div className={css.containerInfo}>
           <h5>Additional information</h5>

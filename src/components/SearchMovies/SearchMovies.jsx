@@ -1,24 +1,22 @@
-import { searchMovies } from 'Services/Film-api';
-
-import { STATUS } from 'components/APP/APP';
+import React, { useEffect, useState } from 'react';
 import Button from 'components/Button/Button';
 import ErrorCard from 'components/ErrorCard/ErrorCard';
 import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
-import React, { useEffect, useState } from 'react';
+import { searchMovies } from 'Services/Film-api';
+import { STATUS } from 'components/APP/APP';
 
 const SearchMovies = ({ searchText }) => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [status, setStatus] = useState(STATUS.IDLE);
 
-  
   useEffect(() => {
     const requestMovies = async searchText => {
-      if (searchText === '' || searchText=== undefined) return;
+      if (searchText === '' || searchText === undefined) return;
       try {
         const data = await searchMovies(searchText, currentPage);
-        console.log(searchText);
+
         if (currentPage === 1) {
           setStatus(STATUS.PENDING);
           setMovies(data.data.results);
@@ -37,8 +35,6 @@ const SearchMovies = ({ searchText }) => {
 
   const loadMoreMovies = () => {
     setCurrentPage(prevPage => prevPage + 1);
-
-  
   };
 
   if (status === STATUS.PENDING) return <Loader />;

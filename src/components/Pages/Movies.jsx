@@ -7,14 +7,16 @@ import { useSearchParams } from 'react-router-dom';
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const params = useMemo(()=>Object.fromEntries([...searchParams]),[searchParams]);
-  const {query} = params;
-
+  const params = useMemo(
+    () => Object.fromEntries([...searchParams]),
+    [searchParams]
+  );
+  const { query } = params;
 
   return (
-    <Suspense fallback={<Loader/>}>
+    <Suspense fallback={<Loader />}>
       <SearchBar searchParams={setSearchParams} />
-      <SearchMovies searchText={query}  />
+      <SearchMovies searchText={query} />
     </Suspense>
   );
 };
