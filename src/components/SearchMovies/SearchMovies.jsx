@@ -5,12 +5,18 @@ import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
 import { searchMovies } from 'Services/Film-api';
 import { STATUS } from 'components/APP/APP';
+import { useCustomContext } from 'components/Context/Context';
 
 const SearchMovies = ({ searchText }) => {
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
+  const {movies, setMovies} = useCustomContext();
   const [currentPage, setCurrentPage] = useState(1);
   const [status, setStatus] = useState(STATUS.IDLE);
 
+  useEffect(()=>{
+    movies&&setStatus(STATUS.RESOLVED);
+  },[movies]);
+  
   useEffect(() => {
     const requestMovies = async searchText => {
       if (searchText === '' || searchText === undefined) return;
