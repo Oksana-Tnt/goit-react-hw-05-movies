@@ -29,10 +29,10 @@ const Reviews = () => {
   else if (status === STATUS.RESOLVED && reviews.length !== 0) {
     return (
       <>
-        <ul>
+        <ul className="list-group">
           {reviews.map(item => (
-            <li key={item.id}>
-              <p>Author: {item.author}</p>
+            <li className="list-group-item" key={item.id}>
+              <h6>Author: {item.author}</h6>
               <p>{item.content}</p>
             </li>
           ))}

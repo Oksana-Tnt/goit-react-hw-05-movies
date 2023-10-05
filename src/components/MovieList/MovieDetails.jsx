@@ -6,6 +6,7 @@ import { STATUS } from 'components/APP/APP';
 import MovieItem from 'components/MovieItem/MovieItem';
 import ErrorCard from 'components/ErrorCard/ErrorCard';
 import Loader from 'components/Loader/Loader';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -41,15 +42,27 @@ const MovieDetails = () => {
             to={backLinkHref}
             className="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
           >
-            Back to movies
+            <AiOutlineArrowLeft /> Back to movies
           </Link>
         </p>
         <MovieItem movie={movie} genres={genres} />
-        <div>Additional information</div>
-        <ul className={css.information}>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
-        </ul>
+        <div className={css.containerInfo}>
+          <h5>Additional information</h5>
+          <ul className="list-group list-group-flush">
+            <Link
+              className="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              to="cast"
+            >
+              Cast
+            </Link>
+            <Link
+              className="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              to="reviews"
+            >
+              Reviews
+            </Link>
+          </ul>
+        </div>
         <Suspense>
           <Outlet />
         </Suspense>
