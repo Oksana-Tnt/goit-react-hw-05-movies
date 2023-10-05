@@ -16,7 +16,7 @@ const MovieItem = ({ movie, genres }) => {
       <div className={css.descriptions}>
         <h2
           className={css.title}
-        >{`${movie.title} (${movie.release_date})`}</h2>
+        >{`${movie.title} (${movie.release_date.substring(0,4)})`}</h2>
         <p className={css.score}>
           User score: {`${(movie.vote_average * 10).toFixed(2)}%`}
         </p>
