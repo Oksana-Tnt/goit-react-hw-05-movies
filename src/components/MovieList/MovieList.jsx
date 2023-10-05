@@ -9,7 +9,7 @@ const MovieList = ({ movies }) => {
           className="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover "
           key={movie.id}
           to={`${movie.id}`}
-          state={location}
+          state={{from:location}}
         >
           <li className="list-group-item ">{movie.title}</li>
         </Link>

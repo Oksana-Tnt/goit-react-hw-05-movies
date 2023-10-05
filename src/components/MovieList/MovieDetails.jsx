@@ -1,5 +1,5 @@
 import { getMovieById } from 'Services/Film-api';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 import { STATUS } from 'components/APP/APP';
@@ -14,6 +14,7 @@ const MovieDetails = () => {
   const [genres, setGenres] = useState([]);
   const [status, setStatus] = useState(STATUS.IDLE);
   const location = useLocation();
+  const ref=useRef(location.state?.from??'/');
 
   useEffect(() => {
     const movieById = async movieId => {
@@ -31,15 +32,13 @@ const MovieDetails = () => {
     movieById(movieId);
   }, [movieId]);
 
-  const backLinkHref = location.state;
-
   if (status === STATUS.PENDING) return <Loader />;
   else if (status === STATUS.RESOLVED) {
     return (
       <>
         <p>
           <Link
-            to={backLinkHref}
+            to={ref.current}
             className="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
           >
             <AiOutlineArrowLeft /> Back to movies
